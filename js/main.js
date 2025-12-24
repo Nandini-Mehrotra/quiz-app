@@ -20,14 +20,38 @@ document.querySelector(".next").addEventListener("click", () => {
         quiz.questionIndex++;
         showQuestion(quiz.callQuestion());
         showNumber(quiz.questionIndex + 1, quiz.questions.length);
-    } else {
-        console.log("The End");
+    // } else {
+    //     console.log("The End");
+    //     clearInterval(counter);
+    //     clearInterval(counterLine);
+    //     document.querySelector(".quiz-box").classList.remove("active");
+    //     document.querySelector(".score-box").classList.add("active");
+    //     // showScore(quiz.correctAnswers, quiz.questions.length);
+    // 
+    }
+    else {
         clearInterval(counter);
         clearInterval(counterLine);
         document.querySelector(".quiz-box").classList.remove("active");
         document.querySelector(".score-box").classList.add("active");
-        showScore(quiz.correctAnswers, quiz.questions.length);
+
+        // Get final personality
+        const finalPersonality = getFinalPersonality();
+        let resultText = "";
+
+        if (finalPersonality === "thinker") {
+            resultText = "You are thoughtful, analytical, and introspective.";
+        }
+        if (finalPersonality === "explorer") {
+            resultText = "You are curious, adventurous, and action-oriented.";
+        }
+        if (finalPersonality === "dreamer") {
+            resultText = "You are emotional, imaginative, and reflective.";
+        }
+
+        document.querySelector(".score-text").innerText = resultText;
     }
+
 });
 
 // Replay Button event
@@ -72,25 +96,46 @@ function showQuestion(question) {
 }
 
 // Function for Options
+// function optionSelected(option) {
+//     clearInterval(counter);
+//     clearInterval(counterLine);
+//     let answer = option.querySelector("span b").textContent;
+//     let question = quiz.callQuestion();
+
+//     if (question.checkAnswer(answer)) {
+//         option.classList.add("correct");
+//         option.insertAdjacentHTML("beforeend", correctIcon);
+//         quiz.correctAnswers++;
+//     } else {
+//         option.classList.add("incorrect");
+//         option.insertAdjacentHTML("beforeend", incorrectIcon);
+//     }
+
+//     for (let i = 0; i < option_list.children.length; i++) {
+//         option_list.children[i].classList.add("disabled");
+//     }
+// }
+
 function optionSelected(option) {
     clearInterval(counter);
     clearInterval(counterLine);
-    let answer = option.querySelector("span b").textContent;
+
+    let selectedOption = option.querySelector("span b").textContent;
     let question = quiz.callQuestion();
 
-    if (question.checkAnswer(answer)) {
-        option.classList.add("correct");
-        option.insertAdjacentHTML("beforeend", correctIcon);
-        quiz.correctAnswers++;
-    } else {
-        option.classList.add("incorrect");
-        option.insertAdjacentHTML("beforeend", incorrectIcon);
-    }
+    // Personality scoring
+    const personalityType = question.answerTypes[selectedOption];
+    personalityScore[personalityType]++;
 
+    // Disable all options after selection
     for (let i = 0; i < option_list.children.length; i++) {
         option_list.children[i].classList.add("disabled");
     }
+
+    // Optional: highlight the selected option
+    option.classList.add("selected");
 }
+
 
 // Function for Show Number of Questions
 function showNumber(questionNumber, allQuestions) {
@@ -98,11 +143,11 @@ function showNumber(questionNumber, allQuestions) {
     document.querySelector(".badge").innerHTML = tag;
 }
 
-// Function for Show Score
-function showScore(correctAnswers, allQuestions) {
-    let tag = `You have ${correctAnswers} correct answers out of ${allQuestions}`;
-    document.querySelector(".score-text").innerHTML = tag;
-}
+// // Function for Show Score
+// function showScore(correctAnswers, allQuestions) {
+//     let tag = `You have ${correctAnswers} correct answers out of ${allQuestions}`;
+//     document.querySelector(".score-text").innerHTML = tag;
+// }
 
 // Timer 
 let counter;
@@ -116,19 +161,13 @@ function startTimer(time) {
 
         if (time < 0) {
             clearInterval(counter);
-
             document.querySelector(".time-text").textContent = "Time Over";
 
-            let answer = quiz.callQuestion().correctAnswer;
-
             for (let option of option_list.children) {
-                if (option.querySelector("span b").textContent == answer) {
-                    option.classList.add("correct");
-                    option.insertAdjacentHTML("beforeend", correctIcon);
-                }
                 option.classList.add("disabled");
             }
         }
+
     }
 
 }

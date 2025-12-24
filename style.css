@@ -61,7 +61,7 @@ body {
     background-color: rgb(100, 130, 250);
 }
 
-.option-list .option.correct {
+/* .option-list .option.correct {
     color: #1f1411;
     background: #2EFF2E;
 }
@@ -69,6 +69,11 @@ body {
 .option-list .option.incorrect {
     color: #f00;
     background: rgba(255, 100, 100, 0.5);
+} */
+
+
+.option.selected {
+    background-color: #ffd700; /* golden highlight */
 }
 
 .quiz-box .option.disabled {
