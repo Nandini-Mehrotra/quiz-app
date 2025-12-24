@@ -2,7 +2,6 @@
 
 Test your personality with this fun Javascript quiz!
 
-![screenshot](./images/screenshot.png)
 
 ## Features
 
