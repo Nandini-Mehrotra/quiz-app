@@ -1,14 +1,14 @@
 # JavaScript Quiz App
 
-This is a JavaScript quiz application that allows users to test their knowledge on a variety of topics.
+Test your personality with this fun Javascript quiz!
 
 ![screenshot](./images/screenshot.png)
 
 ## Features
 
 - Multiple-choice questions
-- Feedback on correct and incorrect answers
-- Option to review answers at the end of the quiz
+- Immediate feedback and selection highlight
+- Final personality result with description
 
 ## Installation
 
@@ -22,7 +22,7 @@ Alternatively, you can also access the live demo of the app [here](https://rm-qu
 2. Answer each question by clicking on one of the multiple-choice options.
 3. Click the "Next Question" button to move on to the next question.
 4. Continue answering questions until the end of the quiz.
-5. At the end to see your score.
+5. At the end to see your personality result.
 6. You can play again and also quit game.
 
 ## Customization
