@@ -1,5 +1,5 @@
 body {
-    background-color: #F1DFD1;
+    background-color: black;
 }
 
 .btn-start,
@@ -10,6 +10,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 0 0 7px;
+    background-color: rgb(109, 94, 96);
 }
 
 .quiz-box.active {
@@ -44,7 +45,7 @@ body {
 }
 
 .option-list .option {
-    border: 1px solid #ee2c3f;
+    border: 1px solid #f599a2;
     border-radius: 5px;
     padding: 8px 15px;
     margin-bottom: 10px;
@@ -58,7 +59,7 @@ body {
 }
 
 .option-list .option:hover {
-    background-color: rgb(100, 130, 250);
+    background-color: rgb(156, 171, 229);
 }
 
 /* .option-list .option.correct {
@@ -73,7 +74,7 @@ body {
 
 
 .option.selected {
-    background-color: #ffd700; /* golden highlight */
+    background-color: #26cad9; /* golden highlight */
 }
 
 .quiz-box .option.disabled {
@@ -101,7 +102,7 @@ footer {
 
     transform: translate(-50%, -50%) scale(0.7);
     transition: all .4s ease;
-    color: blue;
+    color: rgb(5, 5, 9);
     text-align: center;
     padding: 20px 0;
 }
@@ -149,7 +150,7 @@ header {
 
 /* Time Line */
 .time-line {
-    background-color: #ee2c3f;
+    background-color: #f16976;
     height: 5px;
     /* width: 600px; */
     position: absolute;
